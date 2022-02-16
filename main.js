@@ -44,6 +44,12 @@ const replaceSpecial = (data) => {
     let userRegex = /(?<!\\)(<@(!|)\d{18}>)/g;
     let roleRegex = /(?<!\\)(<@&\d{18}>)/g;
     let channelRegex = /(?<!\\)(<#\d{18}>)/g;
+
+    if(!data || !data.raw) return '';
+    if(!data.data) return data.raw;
+
+    console.log(data);
+
     return data.raw
         .replace(emojiRegex, () => `<span class="emojiContainer-2XKwXX" role="button" tabindex="0"><img src="${data.data.shift()}" alt="emoji" draggable="false" class="emoji" data-type="emoji"></span>`)
         .replace(normalEmojiRegex, () => `<span class="emojiContainer-2XKwXX" role="button" tabindex="0"><img src="${data.data.shift()}" alt="emoji" draggable="false" class="emoji" data-type="emoji"></span>`)
@@ -142,6 +148,7 @@ const addReaction = (url, count) => {
 
 if(contentElement) {
     let loaded = base64Decode(params.data);
+    console.log(loaded);
     addAvatar(loaded.author.avatar);
     addUsername(loaded.author.username, loaded.created, false, loaded.author.color);
     addContent(loaded.content);
