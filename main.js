@@ -44,8 +44,6 @@ const replaceSpecial = (data) => {
     let userRegex = /(?<!\\)(<@(!|)\d{18}>)/g;
     let roleRegex = /(?<!\\)(<@&\d{18}>)/g;
     let channelRegex = /(?<!\\)(<#\d{18}>)/g;
-    console.log(data.data);
-    //data.data.shift()
     return data.raw
         .replace(emojiRegex, () => `<span class="emojiContainer-2XKwXX" role="button" tabindex="0"><img src="${data.data.shift()}" alt="emoji" draggable="false" class="emoji" data-type="emoji"></span>`)
         .replace(normalEmojiRegex, () => `<span class="emojiContainer-2XKwXX" role="button" tabindex="0"><img src="${data.data.shift()}" alt="emoji" draggable="false" class="emoji" data-type="emoji"></span>`)
