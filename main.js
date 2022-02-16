@@ -73,7 +73,7 @@ const createEmbed = (color) => {
 }
 
 const setAuthor = (username, avatar, url) => {
-    let str = `<div class="embedAuthor-TJIHp5 embedMargin-2PsaQ4"><img alt="" class="embedAuthorIcon-3pnkS4" src="${avatar}"><a class="anchor-1MIwyf anchorUnderlineOnHover-2qPutX embedAuthorNameLink-1NK1y6 embedLink-1TLNja embedAuthorName-pGyUPR" tabindex="0" href="${url}" rel="noreferrer noopener" target="_blank" role="button">${username}</a></div>`;
+    let str = `<div class="embedAuthor-TJIHp5 embedMargin-2PsaQ4">${avatar ? `<img alt="" class="embedAuthorIcon-3pnkS4" src="${avatar}">` : ''}<a class="anchor-1MIwyf anchorUnderlineOnHover-2qPutX embedAuthorNameLink-1NK1y6 embedLink-1TLNja embedAuthorName-pGyUPR" tabindex="0" href="${url}" rel="noreferrer noopener" target="_blank" role="button">${username}</a></div>`;
     embed.innerHTML += str;
 }
 
@@ -134,9 +134,9 @@ if(contentElement) {
     if(loaded.embeds) {
         for(let embed of loaded.embeds) {
             createEmbed(embed.color);
-            setAuthor(embed.author.name, embed.author.icon_url, embed.author.url);
-            setTitle(embed.title, embed.url);
-            setDescription(embed.description);
+            if(embed.author) setAuthor(embed.author.name, embed.author.icon_url, embed.author.url);
+            if(embed.title) setTitle(embed.title, embed.url);
+            if(embed.description) setDescription(embed.description);
             if(embed.thumbnail) setThumbnail(embed.thumbnail.url);
             if(embed.fields) {
                 for(let field of embed.fields) {
