@@ -29829,10 +29829,6 @@ html .progress-2Otdc- {
     padding-right: 48px !important
 }
 
-.message-2CShn3.selected-2LX7Jy, .mouse-mode.full-motion .message-2CShn3:hover {
-    background-color: var(--background-message-hover)
-}
-
 .message-2CShn3.mentioned-Tre-dv.selected-2LX7Jy, .mouse-mode.full-motion .mentioned-Tre-dv:hover {
     background-color: var(--background-mentioned-hover)
 }
