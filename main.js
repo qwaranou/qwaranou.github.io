@@ -39,7 +39,7 @@ function calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
 }
 
 const replaceSpecial = (data) => {
-    let emojiRegex = /(?<!\\)(<(a|):.*:\d{18}>)/g;
+    let emojiRegex = /((?<!\\)<(a|):\w*:\d{18}>)/g;
     let normalEmojiRegex = '<d:EMOJI:>';
     let userRegex = /(?<!\\)(<@(!|)\d{18}>)/g;
     let roleRegex = /(?<!\\)(<@&\d{18}>)/g;
