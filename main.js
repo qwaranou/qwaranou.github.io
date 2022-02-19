@@ -146,39 +146,51 @@ const addReaction = (url, count) => {
     reactionElement.innerHTML += str;
 }
 
-if(contentElement) {
-    let loaded = base64Decode(params.data);
-    console.log(loaded);
-    addAvatar(loaded.author.avatar);
-    addUsername(loaded.author.username, loaded.created, false, loaded.author.color);
-    addContent(loaded.content);
+async function preloader() {
+    if(contentElement) {
+        let loaded = base64Decode(params.data);
+        console.log(loaded);
+        addAvatar(loaded.author.avatar);
+        addUsername(loaded.author.username, loaded.created, false, loaded.author.color);
+        addContent(loaded.content);
 
-    if(loaded.attachments) {
-        for(let att of loaded.attachments) {
-            addAttachment(att.url, att.width, att.height);
-        }
-    }
-
-    if(loaded.embeds) {
-        for(let embed of loaded.embeds) {
-            createEmbed(embed.color);
-            if(embed.author) setAuthor(embed.author.name, embed.author.icon_url, embed.author.url);
-            if(embed.title) setTitle(embed.title, embed.url);
-            if(embed.description) setDescription(embed.description);
-            if(embed.thumbnail) setThumbnail(embed.thumbnail.url);
-            if(embed.fields) {
-                for(let field of embed.fields) {
-                    addField(field.name, field.value);
-                }
+        if(loaded.attachments) {
+            for(let att of loaded.attachments) {
+                addAttachment(att.url, att.width, att.height);
             }
-            if(embed.image) setImage(embed.image.url);
-            if(embed.footer) setFooter(embed.footer.text, embed.footer.icon_url, embed.timestamp ? embed.timestamp : null);
+        }
+
+        if(loaded.embeds) {
+            for(let embed of loaded.embeds) {
+                createEmbed(embed.color);
+                if(embed.author) setAuthor(embed.author.name, embed.author.icon_url, embed.author.url);
+                if(embed.title) setTitle(embed.title, embed.url);
+                if(embed.description) setDescription(embed.description);
+                if(embed.thumbnail) setThumbnail(embed.thumbnail.url);
+                if(embed.fields) {
+                    for(let field of embed.fields) {
+                        addField(field.name, field.value);
+                    }
+                }
+                if(embed.image) setImage(embed.image.url);
+                if(embed.footer) setFooter(embed.footer.text, embed.footer.icon_url, embed.timestamp ? embed.timestamp : null);
+            }
+        }
+
+        if(loaded.reactions) {
+            for(let reaction of loaded.reactions) {
+                addReaction(reaction.url, reaction.count);
+            }
         }
     }
 
-    if(loaded.reactions) {
-        for(let reaction of loaded.reactions) {
-            addReaction(reaction.url, reaction.count);
+    await html2canvas(document.querySelector("#capture")).then(canvas => {
+        let img = canvas.toDataURL();
+        let imgOutput = document.querySelector('#og-image');
+        if(imgOutput) {
+            imgOutput.content = img;
         }
-    }
+    });
 }
+
+preloader();

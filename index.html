@@ -2,6 +2,14 @@
 <html lang="en-GB" style="font-size: 100%; --saturation-factor: 1;" class="mouse-mode full-motion app-focused theme-dark platform-web font-size-16" data-rh="lang,style,class"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <title>Message viewer</title>
+    <meta property="og:title" content="Message Archive" />
+    <meta property="og:type" content="image" />
+    <meta property="og:url" id="og-url" content="" />
+    <meta property="og:image" id="og-image" content="" />
+    <meta name="theme-color" content="#FF0000">
+
+    <!-- Include this to make the og:image larger -->
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="main.css">
     <style>
         .scrollerInner-2PPAp2 {
@@ -10,10 +18,28 @@
             margin: auto auto;
             padding: 20px;
         }
+
+        canvas {
+            z-index: 10000;
+            position: absolute;
+            background-color: rgb(32, 34, 37);
+        }
+
+        #capture {
+            background-color: #36393f;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        #chat-messages-943321998891831296 {
+            margin-top: -10px;
+        }
     </style>
     </head>
   <body>
-  <div id="app-mount" class="appMount-2yBXZl"><div class="app-3xd6d0"><div class="app-2CXKsg"><div class="layers-OrUESM layers-1YQhyW"><div aria-hidden="false" class="layer-86YKbF baseLayer-W6S8cY"><div class="container-1eFtFS"> <div class="base-2jDfDU"><div class="content-1SgpWY" style="position: relative;"><div class="chat-2ZfjoI"><div class="content-1jQy2l"><main class="chatContent-3KubbW" aria-label="playground (channel)"><div class="messagesWrapper-RpOMA3 group-spacing-16"><div class="scroller-kQBbkU auto-2K3UW5 scrollerBase-_bVAAt disableScrollAnchor-6TwzvM managedReactiveScroller-1lEEh3" dir="ltr" data-jump-section="global" tabindex="-1" role="group"><div class="scrollerContent-2SW0kQ content-2a4AW9"><ol class="scrollerInner-2PPAp2" aria-label="Messages in playground" role="list" data-list-id="chat-messages" tabindex="0"><li id="chat-messages-943321998891831296" class="messageListItem-ZZ7v6g" aria-setsize="-1"><div class="message-2CShn3 cozyMessage-1DWF9U groupStart-3Mlgv1 wrapper-30-Nkg cozy-VmLDNB zalgo-26OfGz" role="article" data-list-item-id="chat-messages___chat-messages-943321998891831296" tabindex="-1" aria-setsize="-1" aria-roledescription="Message" aria-labelledby="message-username-943321998891831296 uid_1 message-content-943321998891831296 message-accessories-943321998891831296 uid_2 message-timestamp-943321998891831296" aria-describedby="uid_3 message-reactions-943321998891831296"><div id="message-contents" class="contents-2MsGLg"><div id="content" class="markup-eYLPri messageContent-2t3eCI"></div><div id="message-accessories" class="container-2sjPya"></div></div><div class="container-2sjPya"><div class="reactions-1BUEKl" role="group" id="message-reactions"></div></div></div></li></ol></div></div></div> </main></div></div></div></div></div></div></div></div></div></div>
+  <div id="app-mount" class="appMount-2yBXZl"><div class="app-3xd6d0"><div class="app-2CXKsg"><div class="layers-OrUESM layers-1YQhyW"><div aria-hidden="false" class="layer-86YKbF baseLayer-W6S8cY"><div class="container-1eFtFS"> <div class="base-2jDfDU"><div class="content-1SgpWY" style="position: relative;"><div class="chat-2ZfjoI"><div class="content-1jQy2l"><main class="chatContent-3KubbW" aria-label="playground (channel)"><div class="messagesWrapper-RpOMA3 group-spacing-16"><div class="scroller-kQBbkU auto-2K3UW5 scrollerBase-_bVAAt disableScrollAnchor-6TwzvM managedReactiveScroller-1lEEh3" dir="ltr" data-jump-section="global" tabindex="-1" role="group"><div class="scrollerContent-2SW0kQ content-2a4AW9"><ol id="capture" class="scrollerInner-2PPAp2" aria-label="Messages in playground" role="list" data-list-id="chat-messages" tabindex="0"><li id="chat-messages-943321998891831296" class="messageListItem-ZZ7v6g" aria-setsize="-1"><div class="message-2CShn3 cozyMessage-1DWF9U groupStart-3Mlgv1 wrapper-30-Nkg cozy-VmLDNB zalgo-26OfGz" role="article" data-list-item-id="chat-messages___chat-messages-943321998891831296" tabindex="-1" aria-setsize="-1" aria-roledescription="Message" aria-labelledby="message-username-943321998891831296 uid_1 message-content-943321998891831296 message-accessories-943321998891831296 uid_2 message-timestamp-943321998891831296" aria-describedby="uid_3 message-reactions-943321998891831296"><div id="message-contents" class="contents-2MsGLg"><div id="content" class="markup-eYLPri messageContent-2t3eCI"></div><div id="message-accessories" class="container-2sjPya"></div></div><div class="container-2sjPya"><div class="reactions-1BUEKl" role="group" id="message-reactions"></div></div></div></li></ol></div></div></div> </main></div></div></div></div></div></div></div></div></div></div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
   <script src="main.js"></script>
   </body></html>
