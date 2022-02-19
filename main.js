@@ -188,12 +188,12 @@ async function preloader() {
         let img = canvas.toDataURL();
         let imgOutput = document.querySelector('#og-image');
         if(imgOutput) {
-            imgOutput.content = `decoder.php?data=${img}`;
+            imgOutput.content = img;
         }
 
         imgOutput = document.querySelector('#twitter-image');
         if(imgOutput) {
-            imgOutput.content = `decoder.php?data=${img}`;
+            imgOutput.content = img;
         }
     });
 }
