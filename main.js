@@ -195,6 +195,10 @@ async function preloader() {
         if(imgOutput) {
             imgOutput.content = img;
         }
+
+        if(params.image) {
+            document.write(img);
+        }
     });
 }
 
